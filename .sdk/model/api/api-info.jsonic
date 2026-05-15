@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "API Support"
+        url: "https://freepublicapis.com/image-transformation-api"
+      }
+      description: "This API allows users to apply various transformations to images, enabling modifications such as filtering, resizing, and style transfer. It is designed for developers looking to enhance visual content programmatically."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://image.pollinations.ai"
+        }
+      ]
+      title: "Image Transformation API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

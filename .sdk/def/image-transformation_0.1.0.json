@@ -1,0 +1,223 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Image Transformation API",
+    "description": "This API allows users to apply various transformations to images, enabling modifications such as filtering, resizing, and style transfer. It is designed for developers looking to enhance visual content programmatically.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "url": "https://freepublicapis.com/image-transformation-api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://image.pollinations.ai",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/prompt/{prompt}": {
+      "get": {
+        "summary": "Transform image based on prompt",
+        "description": "Applies various transformations to images based on the provided text prompt. Supports filtering, resizing, and style transfer operations.",
+        "operationId": "transformImage",
+        "parameters": [
+          {
+            "name": "prompt",
+            "in": "path",
+            "description": "Text prompt describing the desired image transformation (e.g., 'transform this image', 'apply vintage filter', 'resize to 800x600')",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "transform this image"
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "description": "The AI model to use for image transformation",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kontext"
+              ],
+              "default": "kontext"
+            },
+            "example": "kontext"
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "description": "URL or reference to the source image to be transformed",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          {
+            "name": "width",
+            "in": "query",
+            "description": "Desired width of the output image in pixels",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4096
+            }
+          },
+          {
+            "name": "height",
+            "in": "query",
+            "description": "Desired height of the output image in pixels",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4096
+            }
+          },
+          {
+            "name": "seed",
+            "in": "query",
+            "description": "Random seed for reproducible transformations",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "nologo",
+            "in": "query",
+            "description": "Remove logo from the generated image",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "enhance",
+            "in": "query",
+            "description": "Apply enhancement to the image quality",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully transformed image",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/webp": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Invalid prompt or image parameter"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Image not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Source image not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Rate limit exceeded"
+                    },
+                    "retry_after": {
+                      "type": "integer",
+                      "description": "Seconds until rate limit resets"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "An error occurred processing your request"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Image Transformation"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Image Transformation",
+      "description": "Endpoints for transforming and modifying images"
+    }
+  ],
+  "externalDocs": {
+    "description": "API Documentation",
+    "url": "https://image.pollinations.ai/prompt/transform%20this%20image?model=kontext&image="
+  }
+}

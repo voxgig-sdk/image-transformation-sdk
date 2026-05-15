@@ -1,0 +1,116 @@
+# Entity: image_transformation
+
+main: kit: entity: image_transformation: {
+
+  alias: field: {}
+
+  name: "image_transformation"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "transform this image"
+                kind: "param"
+                name: "prompt"
+                orig: "prompt"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: false
+                kind: "query"
+                name: "enhance"
+                orig: "enhance"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                kind: "query"
+                name: "height"
+                orig: "height"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "image"
+                orig: "image"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "kontext"
+                kind: "query"
+                name: "model"
+                orig: "model"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: false
+                kind: "query"
+                name: "nologo"
+                orig: "nologo"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                kind: "query"
+                name: "seed"
+                orig: "seed"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "width"
+                orig: "width"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/prompt/{prompt}"
+          parts: [
+            "prompt"
+            "{prompt}"
+          ]
+          select: {
+            exist: [
+              "enhance"
+              "height"
+              "image"
+              "model"
+              "nologo"
+              "prompt"
+              "seed"
+              "width"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "prompt"
+      ]
+    ]
+  }
+
+
+
+}
