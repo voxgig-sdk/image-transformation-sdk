@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/image-transformation-sdk"
-	"github.com/voxgig-sdk/image-transformation-sdk/core"
+	sdk "github.com/voxgig-sdk/image-transformation-sdk/go"
+	"github.com/voxgig-sdk/image-transformation-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/image-transformation-sdk/go/utility/struct"
 )
 
 func TestImageTransformationEntity(t *testing.T) {

@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/image-transformation-sdk/core"
+	"github.com/voxgig-sdk/image-transformation-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/image-transformation-sdk/go/utility/struct"
 )
 
 type ImageTransformationEntity struct {

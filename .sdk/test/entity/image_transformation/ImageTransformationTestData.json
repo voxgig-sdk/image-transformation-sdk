@@ -2,13 +2,16 @@
   "existing": {
     "image_transformation": {
       "IMAGE_TRANSFORMATION00": {
-        "prompt": "PROMPT01"
+        "prompt": "PROMPT01",
+        "id": "IMAGE_TRANSFORMATION00"
       },
       "IMAGE_TRANSFORMATION01": {
-        "prompt": "PROMPT01"
+        "prompt": "PROMPT01",
+        "id": "IMAGE_TRANSFORMATION01"
       },
       "IMAGE_TRANSFORMATION02": {
-        "prompt": "PROMPT01"
+        "prompt": "PROMPT01",
+        "id": "IMAGE_TRANSFORMATION02"
       }
     }
   },

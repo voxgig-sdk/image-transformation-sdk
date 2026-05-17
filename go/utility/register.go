@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/image-transformation-sdk/core"
+import "github.com/voxgig-sdk/image-transformation-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/image-transformation-sdk"
-	"github.com/voxgig-sdk/image-transformation-sdk/core"
+	sdk "github.com/voxgig-sdk/image-transformation-sdk/go"
+	"github.com/voxgig-sdk/image-transformation-sdk/go/core"
 )
 
 func TestImageTransformationDirect(t *testing.T) {
