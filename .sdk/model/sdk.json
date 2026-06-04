@@ -17,7 +17,12 @@
           }
         ],
         "title": "Image Transformation API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Transform an image by URL through Pollinations' AI image pipeline using a GET request",
+        "homepage": "https://image.pollinations.ai",
+        "docs_url": "https://image.pollinations.ai/prompt/transform%20this%20image",
+        "about_md": "The Image Transformation API is part of [Pollinations.ai](https://pollinations.ai)'s open image generation service, exposed at `https://image.pollinations.ai`. It accepts a source image and a model selection, then returns a transformed image — useful for filtering, resizing, or running style-transfer-style operations over an existing picture.\n\nWhat you get from the API:\n\n- A single GET-style image endpoint that takes a `model` parameter and an `image` URL parameter.\n- Output is returned directly as image bytes, suitable for embedding in `<img>` tags or saving to disk.\n- CORS is enabled, so the endpoint can be called from browser-side code.\n\nOperationally the service is unauthenticated and free to use, but it is community-run and reliability has historically been uneven — at the time of writing the [freepublicapis.com listing](https://freepublicapis.com/image-transformation-api) reports a degraded health score, so treat responses defensively and have a fallback path.",
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +30,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "image_transformation": {

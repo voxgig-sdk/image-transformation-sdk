@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { ImageTransformationSDK } from 'image-transformation'
 
-const client = new ImageTransformationSDK({
-  apikey: process.env.IMAGE-TRANSFORMATION_APIKEY,
-})
+const client = new ImageTransformationSDK({})
 ```
 
 ### 3. Load a imagetransformation
@@ -82,7 +80,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ImageTransformationSDK({ apikey: '...' })
+const client = new ImageTransformationSDK()
 const testClient = client.tester()
 ```
 
@@ -118,7 +116,6 @@ const logger = {
 }
 
 const client = new ImageTransformationSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 IMAGE-TRANSFORMATION_TEST_LIVE=TRUE
-IMAGE-TRANSFORMATION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,7 +143,6 @@ cd ts && npm test
 
 ```ts
 new ImageTransformationSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -158,7 +153,6 @@ new ImageTransformationSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
