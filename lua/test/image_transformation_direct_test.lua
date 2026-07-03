@@ -70,12 +70,14 @@ function image_transformation_direct_setup(mockres)
   local env = runner.env_override({
     ["IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID"] = {},
     ["IMAGETRANSFORMATION_TEST_LIVE"] = "FALSE",
+    ["IMAGETRANSFORMATION_APIKEY"] = "NONE",
   })
 
   local live = env["IMAGETRANSFORMATION_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["IMAGETRANSFORMATION_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

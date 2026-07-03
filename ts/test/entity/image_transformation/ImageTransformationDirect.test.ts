@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID': {},
     'IMAGETRANSFORMATION_TEST_LIVE': 'FALSE',
+    'IMAGETRANSFORMATION_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.IMAGETRANSFORMATION_TEST_LIVE
 
   if (live) {
     const client = new ImageTransformationSDK({
+      apikey: env.IMAGETRANSFORMATION_APIKEY,
     })
 
     let idmap: any = env['IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID']

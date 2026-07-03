@@ -85,6 +85,7 @@ function image_transformation_basic_setup($extra)
         "IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID" => $idmap,
         "IMAGETRANSFORMATION_TEST_LIVE" => "FALSE",
         "IMAGETRANSFORMATION_TEST_EXPLAIN" => "FALSE",
+        "IMAGETRANSFORMATION_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function image_transformation_basic_setup($extra)
     if ($env["IMAGETRANSFORMATION_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["IMAGETRANSFORMATION_APIKEY"],
             ],
             $extra ?? [],
         ]);

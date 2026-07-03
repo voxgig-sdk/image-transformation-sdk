@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://image.pollinations.ai',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -57,80 +61,82 @@ class Config {
       "name": "image_transformation",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "example": "transform this image",
                     "kind": "param",
                     "name": "prompt",
                     "orig": "prompt",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
+                    "active": true,
                     "example": false,
                     "kind": "query",
                     "name": "enhance",
                     "orig": "enhance",
                     "reqd": false,
-                    "type": "`$BOOLEAN`",
-                    "active": true
+                    "type": "`$BOOLEAN`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "height",
                     "orig": "height",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "image",
                     "orig": "image",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "kontext",
                     "kind": "query",
                     "name": "model",
                     "orig": "model",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": false,
                     "kind": "query",
                     "name": "nologo",
                     "orig": "nologo",
                     "reqd": false,
-                    "type": "`$BOOLEAN`",
-                    "active": true
+                    "type": "`$BOOLEAN`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "seed",
                     "orig": "seed",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "width",
                     "orig": "width",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -156,11 +162,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

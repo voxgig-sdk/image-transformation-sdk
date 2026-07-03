@@ -69,12 +69,14 @@ def image_transformation_direct_setup(mockres)
   env = Runner.env_override({
     "IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID" => {},
     "IMAGETRANSFORMATION_TEST_LIVE" => "FALSE",
+    "IMAGETRANSFORMATION_APIKEY" => "NONE",
   })
 
   live = env["IMAGETRANSFORMATION_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["IMAGETRANSFORMATION_APIKEY"],
     }
     client = ImageTransformationSDK.new(merged_opts)
     return {

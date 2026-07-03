@@ -110,12 +110,14 @@ func image_transformationDirectSetup(mockres any) *image_transformationDirectSet
 	env := envOverride(map[string]any{
 		"IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID": map[string]any{},
 		"IMAGETRANSFORMATION_TEST_LIVE":    "FALSE",
+		"IMAGETRANSFORMATION_APIKEY":       "NONE",
 	})
 
 	live := env["IMAGETRANSFORMATION_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["IMAGETRANSFORMATION_APIKEY"],
 		}
 		client := sdk.NewImageTransformationSDK(mergedOpts)
 

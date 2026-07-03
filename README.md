@@ -1,20 +1,8 @@
 # ImageTransformation SDK
 
-Transform an image by URL through Pollinations' AI image pipeline using a GET request
+Image Transformation API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Image Transformation API
-
-The Image Transformation API is part of [Pollinations.ai](https://pollinations.ai)'s open image generation service, exposed at `https://image.pollinations.ai`. It accepts a source image and a model selection, then returns a transformed image — useful for filtering, resizing, or running style-transfer-style operations over an existing picture.
-
-What you get from the API:
-
-- A single GET-style image endpoint that takes a `model` parameter and an `image` URL parameter.
-- Output is returned directly as image bytes, suitable for embedding in `<img>` tags or saving to disk.
-- CORS is enabled, so the endpoint can be called from browser-side code.
-
-Operationally the service is unauthenticated and free to use, but it is community-run and reliability has historically been uneven — at the time of writing the [freepublicapis.com listing](https://freepublicapis.com/image-transformation-api) reports a degraded health score, so treat responses defensively and have a fallback path.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install image-transformation-sdk
 luarocks install image-transformation-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ImageTransformationSDK } from 'image-transformation'
 
-const client = new ImageTransformationSDK({})
+const client = new ImageTransformationSDK({
+  apikey: process.env.IMAGE-TRANSFORMATION_APIKEY,
+})
 
+// Load imagetransformation data
+const imagetransformation = await client.ImageTransformation().load({})
+console.log(imagetransformation.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -108,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from imagetransformation_sdk import ImageTransformationSDK
 
-client = ImageTransformationSDK({})
+client = ImageTransformationSDK({
+    "apikey": os.environ.get("IMAGE-TRANSFORMATION_APIKEY"),
+})
 
 
 # Load a specific imagetransformation
-imagetransformation, err = client.ImageTransformation(None).load(
-    {"id": "example_id"}, None
-)
+imagetransformation, err = client.ImageTransformation().load({"id": "example_id"})
+print(imagetransformation)
 ```
 
 ### PHP
@@ -125,13 +119,14 @@ imagetransformation, err = client.ImageTransformation(None).load(
 <?php
 require_once 'imagetransformation_sdk.php';
 
-$client = new ImageTransformationSDK([]);
+$client = new ImageTransformationSDK([
+    "apikey" => getenv("IMAGE-TRANSFORMATION_APIKEY"),
+]);
 
 
 // Load a specific imagetransformation
-[$imagetransformation, $err] = $client->ImageTransformation(null)->load(
-    ["id" => "example_id"], null
-);
+[$imagetransformation, $err] = $client->ImageTransformation()->load(["id" => "example_id"]);
+print_r($imagetransformation);
 ```
 
 ### Golang
@@ -139,8 +134,13 @@ $client = new ImageTransformationSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/image-transformation-sdk/go"
 
-client := sdk.NewImageTransformationSDK(map[string]any{})
+client := sdk.NewImageTransformationSDK(map[string]any{
+    "apikey": os.Getenv("IMAGE-TRANSFORMATION_APIKEY"),
+})
 
+// Load imagetransformation data
+imagetransformation, err := client.ImageTransformation(nil).Load(map[string]any{}, nil)
+fmt.Println(imagetransformation)
 ```
 
 ### Ruby
@@ -148,13 +148,14 @@ client := sdk.NewImageTransformationSDK(map[string]any{})
 ```ruby
 require_relative "ImageTransformation_sdk"
 
-client = ImageTransformationSDK.new({})
+client = ImageTransformationSDK.new({
+  "apikey" => ENV["IMAGE-TRANSFORMATION_APIKEY"],
+})
 
 
 # Load a specific imagetransformation
-imagetransformation, err = client.ImageTransformation(nil).load(
-  { "id" => "example_id" }, nil
-)
+imagetransformation, err = client.ImageTransformation().load({ "id" => "example_id" })
+puts imagetransformation
 ```
 
 ### Lua
@@ -162,13 +163,14 @@ imagetransformation, err = client.ImageTransformation(nil).load(
 ```lua
 local sdk = require("image-transformation_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("IMAGE-TRANSFORMATION_APIKEY"),
+})
 
 
 -- Load a specific imagetransformation
-local imagetransformation, err = client:ImageTransformation(nil):load(
-  { id = "example_id" }, nil
-)
+local imagetransformation, err = client:ImageTransformation():load({ id = "example_id" })
+print(imagetransformation)
 ```
 
 ## Unit testing in offline mode
@@ -187,25 +189,21 @@ const result = await client.ImageTransformation().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ImageTransformationSDK.test(None, None)
-result, err = client.ImageTransformation(None).load(
-    {"id": "test01"}, None
-)
+client = ImageTransformationSDK.test()
+result, err = client.ImageTransformation().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ImageTransformationSDK::test(null, null);
-[$result, $err] = $client->ImageTransformation(null)->load(
-    ["id" => "test01"], null
-);
+$client = ImageTransformationSDK::test();
+[$result, $err] = $client->ImageTransformation()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.ImageTransformation(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -214,19 +212,15 @@ result, err := client.ImageTransformation(nil).Load(
 ### Ruby
 
 ```ruby
-client = ImageTransformationSDK.test(nil, nil)
-result, err = client.ImageTransformation(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ImageTransformationSDK.test
+result, err = client.ImageTransformation().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:ImageTransformation(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:ImageTransformation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -330,11 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Image Transformation API
-
-- Upstream: [https://image.pollinations.ai](https://image.pollinations.ai)
-- API docs: [https://image.pollinations.ai/prompt/transform%20this%20image](https://image.pollinations.ai/prompt/transform%20this%20image)
 
 ---
 

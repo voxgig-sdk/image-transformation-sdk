@@ -91,6 +91,7 @@ def _image_transformation_basic_setup(extra):
         "IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID": idmap,
         "IMAGETRANSFORMATION_TEST_LIVE": "FALSE",
         "IMAGETRANSFORMATION_TEST_EXPLAIN": "FALSE",
+        "IMAGETRANSFORMATION_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _image_transformation_basic_setup(extra):
     if env.get("IMAGETRANSFORMATION_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("IMAGETRANSFORMATION_APIKEY"),
             },
             extra or {},
         ])
