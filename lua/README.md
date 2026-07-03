@@ -10,7 +10,7 @@ The Lua SDK for the ImageTransformation API — an entity-oriented client using 
 
 ## Install
 ```bash
-luarocks install image-transformation-sdk
+luarocks install voxgig-sdk-image-transformation
 ```
 
 If the module is not yet published, add the source directory to

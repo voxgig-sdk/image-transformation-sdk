@@ -10,7 +10,7 @@ The TypeScript SDK for the ImageTransformation API — a type-safe, entity-orien
 
 ## Install
 ```bash
-npm install image-transformation
+npm install @voxgig-sdk/image-transformation
 ```
 ## Tutorial: your first API call
 

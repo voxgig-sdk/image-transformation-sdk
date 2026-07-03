@@ -8,12 +8,14 @@ source = {
   dir = "image-transformation-sdk/lua"
 }
 description = {
-  summary = "ImageTransformation SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Image Transformation public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/image-transformation-sdk",
+  issues_url = "https://github.com/voxgig-sdk/image-transformation-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "image-transformation" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

@@ -10,7 +10,7 @@ The Python SDK for the ImageTransformation API — an entity-oriented client fol
 
 ## Install
 ```bash
-pip install image-transformation-sdk
+pip install voxgig-sdk-image-transformation
 ```
 
 Or install from source:

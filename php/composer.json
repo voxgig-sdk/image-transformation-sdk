@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/image-transformation",
-  "description": "ImageTransformation SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Image Transformation public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "image-transformation"],
+  "homepage": "https://github.com/voxgig-sdk/image-transformation-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/image-transformation-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/image-transformation-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

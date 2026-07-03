@@ -10,7 +10,7 @@ The PHP SDK for the ImageTransformation API — an entity-oriented client using 
 
 ## Install
 ```bash
-composer require voxgig/image-transformation-sdk
+composer require voxgig-sdk/image-transformation
 ```
 
 

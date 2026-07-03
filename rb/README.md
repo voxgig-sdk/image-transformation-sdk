@@ -10,13 +10,13 @@ The Ruby SDK for the ImageTransformation API — an entity-oriented client using
 
 ## Install
 ```bash
-gem install image-transformation-sdk
+gem install voxgig-sdk-image-transformation
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "image-transformation-sdk"
+gem "voxgig-sdk-image-transformation"
 ```
 
 Then run:
