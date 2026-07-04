@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'IMAGE_TRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID': idmap,
     'IMAGE_TRANSFORMATION_TEST_LIVE': 'FALSE',
     'IMAGE_TRANSFORMATION_TEST_EXPLAIN': 'FALSE',
-    'IMAGE_TRANSFORMATION_APIKEY': 'NONE',
   })
 
   idmap = env['IMAGE_TRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ImageTransformationSDK(merge([
       {
-        apikey: env.IMAGE_TRANSFORMATION_APIKEY,
       },
       extra
     ]))

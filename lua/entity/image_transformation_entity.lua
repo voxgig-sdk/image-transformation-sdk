@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ImageTransformationLoadMatch
+---@param ctrl? table
+---@return ImageTransformation
+---@return string? err
 function ImageTransformationEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -9,9 +9,12 @@ The TypeScript SDK for the ImageTransformation API — a type-safe, entity-orien
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/image-transformation
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/image-transformation-sdk/releases](https://github.com/voxgig-sdk/image-transformation-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ImageTransformationSDK } from 'image-transformation'
+import { ImageTransformationSDK } from '@voxgig-sdk/image-transformation'
 
-const client = new ImageTransformationSDK({
-  apikey: process.env.IMAGE-TRANSFORMATION_APIKEY,
-})
+const client = new ImageTransformationSDK()
 ```
 
-### 3. Load a imagetransformation
+### 3. Load an imagetransformation
 
 ```ts
-const result = await client.ImageTransformation().load({ id: 'example_id' })
+const result = await client.imagetransformation.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ImageTransformationSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.imagetransformation.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ImageTransformationSDK({ apikey: '...' })
+const client = new ImageTransformationSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.imagetransformation
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new ImageTransformationSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new ImageTransformationSDK({
 Create a `.env.local` file at the project root:
 
 ```
-IMAGE-TRANSFORMATION_TEST_LIVE=TRUE
-IMAGE-TRANSFORMATION_APIKEY=<your-key>
+IMAGE_TRANSFORMATION_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new ImageTransformationSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new ImageTransformationSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -265,7 +262,7 @@ API path: `/prompt/{prompt}`
 
 ### ImageTransformation
 
-Create an instance: `const image_transformation = client.ImageTransformation()`
+Create an instance: `const image_transformation = client.image_transformation`
 
 #### Operations
 
@@ -276,7 +273,7 @@ Create an instance: `const image_transformation = client.ImageTransformation()`
 #### Example: Load
 
 ```ts
-const image_transformation = await client.ImageTransformation().load({ id: 'image_transformation_id' })
+const image_transformation = await client.image_transformation.load({ id: 'image_transformation_id' })
 ```
 
 
@@ -337,7 +334,7 @@ image-transformation/
 Import the SDK from the package root:
 
 ```ts
-import { ImageTransformationSDK } from 'image-transformation'
+import { ImageTransformationSDK } from '@voxgig-sdk/image-transformation'
 ```
 
 ### Entity state
@@ -347,11 +344,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const imagetransformation = client.imagetransformation
+await imagetransformation.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// imagetransformation.data() now returns the loaded imagetransformation data
+// imagetransformation.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

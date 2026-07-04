@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:image_transformation():list() / client:image_transformation():load({ id = ... })
+function ImageTransformationSDK:image_transformation(data)
+  local EntityMod = require("entity.image_transformation_entity")
+  if data == nil then
+    if self._image_transformation == nil then
+      self._image_transformation = EntityMod.new(self, nil)
+    end
+    return self._image_transformation
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:image_transformation() instead.
 function ImageTransformationSDK:ImageTransformation(data)
   local EntityMod = require("entity.image_transformation_entity")
   return EntityMod.new(self, data)

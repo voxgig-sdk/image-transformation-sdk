@@ -9,12 +9,9 @@ The Lua SDK for the ImageTransformation API — an entity-oriented client using 
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-image-transformation
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/image-transformation-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("image-transformation_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("IMAGE-TRANSFORMATION_APIKEY"),
-})
+local client = sdk.new()
 ```
 
-### 3. Load a imagetransformation
+### 3. Load an imagetransformation
 
 ```lua
-local result, err = client:ImageTransformation():load({ id = "example_id" })
+local result, err = client:imagetransformation():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:ImageTransformation():load({ id = "test01" })
+local result, err = client:imagetransformation():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-IMAGE-TRANSFORMATION_TEST_LIVE=TRUE
-IMAGE-TRANSFORMATION_APIKEY=<your-key>
+IMAGE_TRANSFORMATION_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -220,7 +213,7 @@ API path: `/prompt/{prompt}`
 
 ### ImageTransformation
 
-Create an instance: `const image_transformation = client.ImageTransformation()`
+Create an instance: `const image_transformation = client.image_transformation`
 
 #### Operations
 
@@ -231,7 +224,7 @@ Create an instance: `const image_transformation = client.ImageTransformation()`
 #### Example: Load
 
 ```ts
-const image_transformation = await client.ImageTransformation().load({ id: 'image_transformation_id' })
+const image_transformation = await client.image_transformation.load({ id: 'image_transformation_id' })
 ```
 
 
@@ -306,11 +299,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local imagetransformation = client:imagetransformation()
+imagetransformation:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- imagetransformation:data_get() now returns the loaded imagetransformation data
+-- imagetransformation:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

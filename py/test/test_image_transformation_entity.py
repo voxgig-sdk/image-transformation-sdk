@@ -49,8 +49,7 @@ class TestImageTransformationEntity:
         # LOAD
         image_transformation_ref01_ent = client.ImageTransformation(None)
         image_transformation_ref01_match_dt0 = {}
-        image_transformation_ref01_data_dt0_loaded, err = image_transformation_ref01_ent.load(image_transformation_ref01_match_dt0, None)
-        assert err is None
+        image_transformation_ref01_data_dt0_loaded = image_transformation_ref01_ent.load(image_transformation_ref01_match_dt0, None)
         assert image_transformation_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _image_transformation_basic_setup(extra):
         "IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID": idmap,
         "IMAGETRANSFORMATION_TEST_LIVE": "FALSE",
         "IMAGETRANSFORMATION_TEST_EXPLAIN": "FALSE",
-        "IMAGETRANSFORMATION_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _image_transformation_basic_setup(extra):
     if env.get("IMAGETRANSFORMATION_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("IMAGETRANSFORMATION_APIKEY"),
             },
             extra or {},
         ])

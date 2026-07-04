@@ -245,6 +245,9 @@ func (sdk *ImageTransformationSDK) Direct(fetchargs map[string]any) (map[string]
 }
 
 
+// ImageTransformation returns a ImageTransformation entity bound to this client.
+// Idiomatic usage: client.ImageTransformation(nil).List(nil, nil) or
+// client.ImageTransformation(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ImageTransformationSDK) ImageTransformation(data map[string]any) ImageTransformationEntity {
 	return NewImageTransformationEntityFunc(sdk, data)
 }

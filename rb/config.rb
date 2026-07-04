@@ -15,9 +15,6 @@ module ImageTransformationConfig
       },
       "options" => {
         "base" => "https://image.pollinations.ai",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -46,6 +43,7 @@ module ImageTransformationConfig
                         "orig" => "prompt",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [

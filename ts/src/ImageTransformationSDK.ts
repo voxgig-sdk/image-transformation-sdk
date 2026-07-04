@@ -2,6 +2,8 @@
 
 import { ImageTransformationEntity } from './entity/ImageTransformationEntity'
 
+export type * from './ImageTransformationTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class ImageTransformationSDK {
 
 
 
+  _image_transformation?: ImageTransformationEntity
+
+  // Idiomatic facade: `client.image_transformation.list()` / `client.image_transformation.load({ id })`.
+  get image_transformation(): ImageTransformationEntity {
+    return (this._image_transformation ??= new ImageTransformationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.image_transformation` instead. */
   ImageTransformation(data?: any) {
     const self = this
     return new ImageTransformationEntity(self,data)

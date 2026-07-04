@@ -117,7 +117,6 @@ func image_transformationBasicSetup(extra map[string]any) *entityTestSetup {
 		"IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID": idmap,
 		"IMAGETRANSFORMATION_TEST_LIVE":      "FALSE",
 		"IMAGETRANSFORMATION_TEST_EXPLAIN":   "FALSE",
-		"IMAGETRANSFORMATION_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID"])
@@ -128,7 +127,6 @@ func image_transformationBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["IMAGETRANSFORMATION_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["IMAGETRANSFORMATION_APIKEY"],
 			},
 			extra,
 		})

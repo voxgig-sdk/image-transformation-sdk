@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  ImageTransformation,
+  ImageTransformationLoadMatch,
+} from '../ImageTransformationTypes'
 
 // TODO: needs Entity superclass
-class ImageTransformationEntity extends ImageTransformationEntityBase {
+class ImageTransformationEntity extends ImageTransformationEntityBase<ImageTransformation> {
 
   constructor(client: ImageTransformationSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class ImageTransformationEntity extends ImageTransformationEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ImageTransformationLoadMatch, ctrl?: Control): Promise<ImageTransformation> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class ImageTransformationEntity extends ImageTransformationEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ImageTransformation> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

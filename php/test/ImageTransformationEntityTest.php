@@ -49,8 +49,7 @@ class ImageTransformationEntityTest extends TestCase
         // LOAD
         $image_transformation_ref01_ent = $client->ImageTransformation(null);
         $image_transformation_ref01_match_dt0 = [];
-        [$image_transformation_ref01_data_dt0_loaded, $err] = $image_transformation_ref01_ent->load($image_transformation_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $image_transformation_ref01_data_dt0_loaded = $image_transformation_ref01_ent->load($image_transformation_ref01_match_dt0, null);
         $this->assertNotNull($image_transformation_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function image_transformation_basic_setup($extra)
         "IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID" => $idmap,
         "IMAGETRANSFORMATION_TEST_LIVE" => "FALSE",
         "IMAGETRANSFORMATION_TEST_EXPLAIN" => "FALSE",
-        "IMAGETRANSFORMATION_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function image_transformation_basic_setup($extra)
     if ($env["IMAGETRANSFORMATION_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["IMAGETRANSFORMATION_APIKEY"],
             ],
             $extra ?? [],
         ]);
