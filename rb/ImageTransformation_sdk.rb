@@ -208,13 +208,7 @@ class ImageTransformationSDK
   end
 
 
-  # Idiomatic facade: client.image_transformation.list / client.image_transformation.load({ "id" => ... })
-  def image_transformation
-    require_relative 'entity/image_transformation_entity'
-    @image_transformation ||= ImageTransformationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.image_transformation instead.
+  # Canonical facade: client.ImageTransformation.list / client.ImageTransformation.load({ "id" => ... })
   def ImageTransformation(data = nil)
     require_relative 'entity/image_transformation_entity'
     ImageTransformationEntity.new(self, data)

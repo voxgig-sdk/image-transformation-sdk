@@ -26,9 +26,9 @@ import { ImageTransformationSDK } from '@voxgig-sdk/image-transformation'
 
 const client = new ImageTransformationSDK()
 
-// Load imagetransformation data
-const imagetransformation = await client.imagetransformation.load({})
-console.log(imagetransformation.data)
+// Load imagetransformation data (returns a ImageTransformation)
+const imagetransformation = await client.ImageTransformation().load()
+console.log(imagetransformation)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from imagetransformation_sdk import ImageTransformationSDK
 client = ImageTransformationSDK()
 
 
-# Load a specific imagetransformation
-imagetransformation = client.imagetransformation.load({"id": "example_id"})
+# Load a specific imagetransformation (returns the record, raises on error)
+imagetransformation = client.ImageTransformation().load({"id": "example_id"})
 print(imagetransformation)
 ```
 
@@ -98,8 +98,8 @@ require_once 'imagetransformation_sdk.php';
 $client = new ImageTransformationSDK();
 
 
-// Load a specific imagetransformation
-$imagetransformation = $client->imagetransformation()->load(["id" => "example_id"]);
+// Load a specific imagetransformation (returns the bare record; throws on error)
+$imagetransformation = $client->ImageTransformation()->load(["id" => "example_id"]);
 print_r($imagetransformation);
 ```
 
@@ -123,8 +123,8 @@ require_relative "ImageTransformation_sdk"
 client = ImageTransformationSDK.new
 
 
-# Load a specific imagetransformation
-imagetransformation = client.imagetransformation.load({ "id" => "example_id" })
+# Load a specific imagetransformation (returns the bare record; raises on error)
+imagetransformation = client.ImageTransformation.load({ "id" => "example_id" })
 puts imagetransformation
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific imagetransformation
-local imagetransformation, err = client:imagetransformation():load({ id = "example_id" })
+local imagetransformation, err = client:ImageTransformation():load({ id = "example_id" })
 print(imagetransformation)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ImageTransformationSDK.test()
-const result = await client.imagetransformation.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const imagetransformation = await client.ImageTransformation().load({ id: 'test01' })
+// imagetransformation is a bare ImageTransformation populated with mock data
+console.log(imagetransformation)
 ```
 
 ### Python
 
 ```python
 client = ImageTransformationSDK.test()
-result = client.imagetransformation.load({"id": "test01"})
+imagetransformation = client.ImageTransformation().load({"id": "test01"})
+print(imagetransformation)
 ```
 
 ### PHP
 
 ```php
-$client = ImageTransformationSDK::test();
-$result = $client->imagetransformation()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ImageTransformationSDK::test([
+    "entity" => ["imagetransformation" => ["test01" => ["id" => "test01"]]],
+]);
+$imagetransformation = $client->ImageTransformation()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.ImageTransformation(nil).Load(
 ### Ruby
 
 ```ruby
-client = ImageTransformationSDK.test
-result = client.imagetransformation.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ImageTransformationSDK.test({
+  "entity" => { "imagetransformation" => { "test01" => { "id" => "test01" } } },
+})
+imagetransformation = client.ImageTransformation.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:imagetransformation():load({ id = "test01" })
+local result, err = client:ImageTransformation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

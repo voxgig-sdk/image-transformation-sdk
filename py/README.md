@@ -33,10 +33,12 @@ client = ImageTransformationSDK()
 
 ### 3. Load an imagetransformation
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.imagetransformation.load({"id": "example_id"})
-    print(result)
+    imagetransformation = client.ImageTransformation().load({"id": "example_id"})
+    print(imagetransformation)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ImageTransformationSDK.test()
 
-result = client.imagetransformation.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+imagetransformation = client.ImageTransformation().load({"id": "test01"})
+# imagetransformation contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,7 +164,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `ImageTransformation` | `(data) -> ImageTransformationEntity` | Create a ImageTransformation entity instance. |
+| `ImageTransformation` | `(data) -> ImageTransformationEntity` | Create an ImageTransformation entity instance. |
 
 ### Entity interface
 
@@ -217,7 +220,7 @@ API path: `/prompt/{prompt}`
 
 ### ImageTransformation
 
-Create an instance: `const image_transformation = client.image_transformation`
+Create an instance: `image_transformation = client.ImageTransformation()`
 
 #### Operations
 
@@ -227,8 +230,8 @@ Create an instance: `const image_transformation = client.image_transformation`
 
 #### Example: Load
 
-```ts
-const image_transformation = await client.image_transformation.load({ id: 'image_transformation_id' })
+```python
+image_transformation = client.ImageTransformation().load({"id": "image_transformation_id"})
 ```
 
 
@@ -302,7 +305,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-imagetransformation = client.imagetransformation
+imagetransformation = client.ImageTransformation()
 imagetransformation.load({"id": "example_id"})
 
 # imagetransformation.data_get() now returns the loaded imagetransformation data

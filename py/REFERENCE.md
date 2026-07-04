@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## ImageTransformationEntity
 
 ```python
-image_transformation = client.image_transformation
+image_transformation = client.ImageTransformation()
 ```
 
 ### Operations
@@ -90,7 +90,7 @@ image_transformation = client.image_transformation
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.image_transformation.load({"id": "image_transformation_id"})
+result = client.ImageTransformation().load({"id": "image_transformation_id"})
 ```
 
 ### Common Methods

@@ -233,10 +233,10 @@ class ImageTransformationSDK
 
     private $_image_transformation = null;
 
-    // Idiomatic facade: $client->image_transformation()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ImageTransformation() (PHP method
-    // names are case-insensitive).
-    public function image_transformation($data = null)
+    // Canonical facade: $client->ImageTransformation()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->image_transformation()
+    // resolves here too.
+    public function ImageTransformation($data = null)
     {
         require_once __DIR__ . '/entity/image_transformation_entity.php';
         if ($data === null) {

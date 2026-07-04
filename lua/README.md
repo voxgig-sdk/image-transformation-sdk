@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load an imagetransformation
 
 ```lua
-local result, err = client:imagetransformation():load({ id = "example_id" })
+local imagetransformation, err = client:ImageTransformation():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(imagetransformation)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:imagetransformation():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:ImageTransformation():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -161,7 +161,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `ImageTransformation` | `(data) -> ImageTransformationEntity` | Create a ImageTransformation entity instance. |
+| `ImageTransformation` | `(data) -> ImageTransformationEntity` | Create an ImageTransformation entity instance. |
 
 ### Entity interface
 
@@ -183,17 +183,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local image_transformation, err = client:ImageTransformation():load({ id = "example_id" })
+    if err then error(err) end
+    -- image_transformation is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -213,7 +218,7 @@ API path: `/prompt/{prompt}`
 
 ### ImageTransformation
 
-Create an instance: `const image_transformation = client.image_transformation`
+Create an instance: `local image_transformation = client:ImageTransformation(nil)`
 
 #### Operations
 
@@ -223,8 +228,8 @@ Create an instance: `const image_transformation = client.image_transformation`
 
 #### Example: Load
 
-```ts
-const image_transformation = await client.image_transformation.load({ id: 'image_transformation_id' })
+```lua
+local image_transformation, err = client:ImageTransformation():load({ id = "image_transformation_id" })
 ```
 
 
@@ -299,7 +304,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local imagetransformation = client:imagetransformation()
+local imagetransformation = client:ImageTransformation()
 imagetransformation:load({ id = "example_id" })
 
 -- imagetransformation:data_get() now returns the loaded imagetransformation data

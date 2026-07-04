@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:image_transformation():list() / client:image_transformation():load({ id = ... })
-function ImageTransformationSDK:image_transformation(data)
+-- Idiomatic facade: client:ImageTransformation():list() / client:ImageTransformation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ImageTransformationSDK:ImageTransformation(data)
   local EntityMod = require("entity.image_transformation_entity")
   if data == nil then
     if self._image_transformation == nil then
@@ -253,12 +254,6 @@ function ImageTransformationSDK:image_transformation(data)
     end
     return self._image_transformation
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:image_transformation() instead.
-function ImageTransformationSDK:ImageTransformation(data)
-  local EntityMod = require("entity.image_transformation_entity")
   return EntityMod.new(self, data)
 end
 

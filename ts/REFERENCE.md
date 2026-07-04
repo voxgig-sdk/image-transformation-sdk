@@ -109,7 +109,7 @@ Alias for `ImageTransformationSDK.test()`.
 ## ImageTransformationEntity
 
 ```ts
-const image_transformation = client.image_transformation
+const image_transformation = client.ImageTransformation()
 ```
 
 ### Operations
@@ -119,7 +119,7 @@ const image_transformation = client.image_transformation
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.image_transformation.load({ id: 'image_transformation_id' })
+const result = await client.ImageTransformation().load({ id: 'image_transformation_id' })
 ```
 
 ### Common Methods

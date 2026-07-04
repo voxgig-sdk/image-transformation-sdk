@@ -32,8 +32,9 @@ client = ImageTransformationSDK.new
 
 ```ruby
 begin
-  result = client.imagetransformation.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare ImageTransformation record (raises on error).
+  imagetransformation = client.ImageTransformation.load({ "id" => "example_id" })
+  puts imagetransformation
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ImageTransformationSDK.test
+client = ImageTransformationSDK.test({
+  "entity" => { "imagetransformation" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.imagetransformation.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+imagetransformation = client.ImageTransformation.load({ "id" => "test01" })
+puts imagetransformation
 ```
 
 ### Use a custom fetch function
@@ -162,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `ImageTransformation` | `(data) -> ImageTransformationEntity` | Create a ImageTransformation entity instance. |
+| `ImageTransformation` | `(data) -> ImageTransformationEntity` | Create an ImageTransformation entity instance. |
 
 ### Entity interface
 
@@ -217,7 +222,7 @@ API path: `/prompt/{prompt}`
 
 ### ImageTransformation
 
-Create an instance: `const image_transformation = client.image_transformation`
+Create an instance: `image_transformation = client.ImageTransformation`
 
 #### Operations
 
@@ -227,8 +232,9 @@ Create an instance: `const image_transformation = client.image_transformation`
 
 #### Example: Load
 
-```ts
-const image_transformation = await client.image_transformation.load({ id: 'image_transformation_id' })
+```ruby
+# load returns the bare ImageTransformation record (raises on error).
+image_transformation = client.ImageTransformation.load({ "id" => "image_transformation_id" })
 ```
 
 
@@ -303,7 +309,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-imagetransformation = client.imagetransformation
+imagetransformation = client.ImageTransformation
 imagetransformation.load({ "id" => "example_id" })
 
 # imagetransformation.data_get now returns the loaded imagetransformation data

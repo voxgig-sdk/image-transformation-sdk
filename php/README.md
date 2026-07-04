@@ -33,9 +33,10 @@ $client = new ImageTransformationSDK();
 
 ```php
 try {
-    $result = $client->imagetransformation()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare ImageTransformation record (throws on error).
+    $imagetransformation = $client->ImageTransformation()->load(["id" => "example_id"]);
+    print_r($imagetransformation);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ImageTransformationSDK::test();
+$client = ImageTransformationSDK::test([
+    "entity" => ["imagetransformation" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->imagetransformation()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$imagetransformation = $client->ImageTransformation()->load(["id" => "test01"]);
+print_r($imagetransformation);
 ```
 
 ### Use a custom fetch function
@@ -166,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `ImageTransformation` | `($data): ImageTransformationEntity` | Create a ImageTransformation entity instance. |
+| `ImageTransformation` | `($data): ImageTransformationEntity` | Create an ImageTransformation entity instance. |
 
 ### Entity interface
 
@@ -222,7 +227,7 @@ API path: `/prompt/{prompt}`
 
 ### ImageTransformation
 
-Create an instance: `const image_transformation = client.image_transformation`
+Create an instance: `$image_transformation = $client->ImageTransformation();`
 
 #### Operations
 
@@ -232,8 +237,9 @@ Create an instance: `const image_transformation = client.image_transformation`
 
 #### Example: Load
 
-```ts
-const image_transformation = await client.image_transformation.load({ id: 'image_transformation_id' })
+```php
+// load() returns the bare ImageTransformation record (throws on error).
+$image_transformation = $client->ImageTransformation()->load(["id" => "image_transformation_id"]);
 ```
 
 
@@ -308,7 +314,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$imagetransformation = $client->imagetransformation();
+$imagetransformation = $client->ImageTransformation();
 $imagetransformation->load(["id" => "example_id"]);
 
 // $imagetransformation->dataGet() now returns the loaded imagetransformation data

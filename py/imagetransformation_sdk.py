@@ -220,25 +220,15 @@ class ImageTransformationSDK:
         }
 
 
-    @property
-    def image_transformation(self):
-        """Idiomatic facade: client.image_transformation.list() / client.image_transformation.load({"id": ...})."""
-        from entity.image_transformation_entity import ImageTransformationEntity
-        cached = getattr(self, "_image_transformation", None)
-        if cached is None:
-            cached = ImageTransformationEntity(self, None)
-            self._image_transformation = cached
-        return cached
-
-    def ImageTransformation(self, data=None):
-        # Deprecated: use client.image_transformation instead.
+    def ImageTransformation(self, data=None) -> "ImageTransformationEntity":
+        """Entity factory: client.ImageTransformation().list({}) / client.ImageTransformation().load({"id": ...})."""
         from entity.image_transformation_entity import ImageTransformationEntity
         return ImageTransformationEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ImageTransformationSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class ImageTransformationSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.image_transformation_entity import ImageTransformationEntity

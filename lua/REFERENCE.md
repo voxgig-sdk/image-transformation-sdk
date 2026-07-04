@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## ImageTransformationEntity
 
 ```lua
-local image_transformation = client:image_transformation(nil)
+local image_transformation = client:ImageTransformation(nil)
 ```
 
 ### Operations
@@ -93,7 +93,7 @@ local image_transformation = client:image_transformation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:image_transformation():load({ id = "image_transformation_id" })
+local result, err = client:ImageTransformation():load({ id = "image_transformation_id" })
 ```
 
 ### Common Methods

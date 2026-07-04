@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## ImageTransformationEntity
 
 ```ruby
-image_transformation = client.image_transformation
+image_transformation = client.ImageTransformation
 ```
 
 ### Operations
@@ -96,7 +96,7 @@ image_transformation = client.image_transformation
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.image_transformation.load({ "id" => "image_transformation_id" })
+result = client.ImageTransformation.load({ "id" => "image_transformation_id" })
 ```
 
 ### Common Methods

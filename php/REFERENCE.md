@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ImageTransformationEntity
 
 ```php
-$image_transformation = $client->image_transformation();
+$image_transformation = $client->ImageTransformation();
 ```
 
 ### Operations
@@ -95,7 +95,7 @@ $image_transformation = $client->image_transformation();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->image_transformation()->load(["id" => "image_transformation_id"]);
+$result = $client->ImageTransformation()->load(["id" => "image_transformation_id"]);
 ```
 
 ### Common Methods
