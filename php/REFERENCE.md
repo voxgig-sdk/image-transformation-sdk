@@ -8,7 +8,7 @@ Complete API reference for the ImageTransformation PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/image-transformation_sdk.php';
+require_once __DIR__ . '/imagetransformation_sdk.php';
 
 $client = new ImageTransformationSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = ImageTransformationSDK::test();
 
 Create a new `ImageTransformationEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ImageTransformationUtility`
 
 Return a copy of the SDK utility object.
 
@@ -95,24 +95,24 @@ $image_transformation = $client->ImageTransformation();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ImageTransformation()->load(["id" => "image_transformation_id"]);
+$result = $client->ImageTransformation()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -121,7 +121,7 @@ Set the entity match criteria.
 Create a new `ImageTransformationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

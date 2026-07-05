@@ -93,7 +93,7 @@ local image_transformation = client:ImageTransformation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ImageTransformation():load({ id = "image_transformation_id" })
+local result, err = client:ImageTransformation():load()
 ```
 
 ### Common Methods

@@ -8,7 +8,7 @@ Complete API reference for the ImageTransformation Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'image-transformation_sdk'
+require_relative 'ImageTransformation_sdk'
 
 client = ImageTransformationSDK.new(options)
 ```
@@ -96,7 +96,7 @@ image_transformation = client.ImageTransformation
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ImageTransformation.load({ "id" => "image_transformation_id" })
+result = client.ImageTransformation.load()
 ```
 
 ### Common Methods

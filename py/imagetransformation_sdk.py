@@ -221,7 +221,7 @@ class ImageTransformationSDK:
 
 
     def ImageTransformation(self, data=None) -> "ImageTransformationEntity":
-        """Entity factory: client.ImageTransformation().list({}) / client.ImageTransformation().load({"id": ...})."""
+        """Entity factory: client.ImageTransformation().list() / client.ImageTransformation().load({"id": ...})."""
         from entity.image_transformation_entity import ImageTransformationEntity
         return ImageTransformationEntity(self, data)
 

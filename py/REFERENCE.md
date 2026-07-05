@@ -8,7 +8,7 @@ Complete API reference for the ImageTransformation Python SDK.
 ### Constructor
 
 ```python
-from image-transformation_sdk import ImageTransformationSDK
+from imagetransformation_sdk import ImageTransformationSDK
 
 client = ImageTransformationSDK(options)
 ```
@@ -90,7 +90,7 @@ image_transformation = client.ImageTransformation()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ImageTransformation().load({"id": "image_transformation_id"})
+result = client.ImageTransformation().load()
 ```
 
 ### Common Methods

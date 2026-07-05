@@ -100,7 +100,7 @@ image_transformation := client.ImageTransformation(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ImageTransformation(nil).Load(map[string]any{"id": "image_transformation_id"}, nil)
+result, err := client.ImageTransformation(nil).Load(nil, nil)
 ```
 
 ### Common Methods
