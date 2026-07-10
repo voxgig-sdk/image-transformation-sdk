@@ -35,11 +35,14 @@ const client = new ImageTransformationSDK()
 
 ### 3. Load an imagetransformation
 
+ImageTransformation is nested under prompt, so provide the `prompt`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const imagetransformation = await client.ImageTransformation().load()
+  const imagetransformation = await client.ImageTransformation().load({
+    prompt: 'example_prompt',
+  })
   console.log(imagetransformation)
 } catch (err) {
   console.error('load failed:', err)
@@ -307,7 +310,7 @@ Create an instance: `const image_transformation = client.ImageTransformation()`
 #### Example: Load
 
 ```ts
-const image_transformation = await client.ImageTransformation().load()
+const image_transformation = await client.ImageTransformation().load({ prompt: 'prompt' })
 ```
 
 

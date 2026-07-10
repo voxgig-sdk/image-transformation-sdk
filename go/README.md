@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single imagetransformation — the value is the loaded record.
-    imagetransformation, err := client.ImageTransformation(nil).Load(nil, nil)
+    // Load a single imageTransformation — the value is the loaded record.
+    imageTransformation, err := client.ImageTransformation(nil).Load(map[string]any{"prompt": "example_prompt"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(imagetransformation)
+    fmt.Println(imageTransformation)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-imagetransformation, err := client.ImageTransformation(nil).Load(
+imageTransformation, err := client.ImageTransformation(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(imagetransformation) // the returned mock data
+fmt.Println(imageTransformation) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -245,9 +245,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    imagetransformation, err := client.ImageTransformation(nil).Load(nil, nil)
+    imageTransformation, err := client.ImageTransformation(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // imagetransformation is the returned record
+    // imageTransformation is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -270,7 +270,7 @@ API path: `/prompt/{prompt}`
 
 ### ImageTransformation
 
-Create an instance: `image_transformation := client.ImageTransformation(nil)`
+Create an instance: `imageTransformation := client.ImageTransformation(nil)`
 
 #### Operations
 
@@ -281,11 +281,11 @@ Create an instance: `image_transformation := client.ImageTransformation(nil)`
 #### Example: Load
 
 ```go
-image_transformation, err := client.ImageTransformation(nil).Load(nil, nil)
+imageTransformation, err := client.ImageTransformation(nil).Load(map[string]any{"prompt": "prompt"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(image_transformation) // the loaded record
+fmt.Println(imageTransformation) // the loaded record
 ```
 
 

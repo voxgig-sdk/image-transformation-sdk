@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## ImageTransformationEntity
 
 ```go
-image_transformation := client.ImageTransformation(nil)
+imageTransformation := client.ImageTransformation(nil)
+fmt.Println(imageTransformation.GetName()) // "image_transformation"
 ```
 
 ### Operations
@@ -100,7 +101,11 @@ image_transformation := client.ImageTransformation(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ImageTransformation(nil).Load(nil, nil)
+result, err := client.ImageTransformation(nil).Load(map[string]any{"prompt": "prompt"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

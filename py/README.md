@@ -38,11 +38,12 @@ client = ImageTransformationSDK()
 
 ### 3. Load an imagetransformation
 
+ImageTransformation is nested under prompt, so provide the `prompt`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    imagetransformation = client.ImageTransformation().load()
+    imagetransformation = client.ImageTransformation().load({"prompt": "example_prompt"})
     print(imagetransformation)
 except Exception as err:
     print(f"load failed: {err}")
@@ -263,7 +264,7 @@ Create an instance: `image_transformation = client.ImageTransformation()`
 #### Example: Load
 
 ```python
-image_transformation = client.ImageTransformation().load()
+image_transformation = client.ImageTransformation().load({"prompt": "prompt"})
 ```
 
 

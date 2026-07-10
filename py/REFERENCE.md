@@ -90,7 +90,7 @@ image_transformation = client.ImageTransformation()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ImageTransformation().load()
+result = client.ImageTransformation().load({"prompt": "prompt"})
 ```
 
 ### Common Methods

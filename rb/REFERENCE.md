@@ -96,7 +96,7 @@ image_transformation = client.ImageTransformation
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ImageTransformation.load()
+result = client.ImageTransformation.load({ "prompt" => "prompt" })
 ```
 
 ### Common Methods

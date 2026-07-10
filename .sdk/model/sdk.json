@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -279,14 +276,17 @@
           "url": "https://freepublicapis.com/image-transformation-api"
         },
         "description": "This API allows users to apply various transformations to images, enabling modifications such as filtering, resizing, and style transfer. It is designed for developers looking to enhance visual content programmatically.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://image.pollinations.ai"
           }
         ],
+        "summary": "This API allows users to apply various transformations to images, enabling modifications such as filtering, resizing, and style transfer.",
         "title": "Image Transformation API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://image.pollinations.ai/prompt/transform%20this%20image?model=kontext&image="
       },
       "option": {},
       "target": {
@@ -339,6 +339,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -389,6 +392,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

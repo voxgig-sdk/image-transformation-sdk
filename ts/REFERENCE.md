@@ -119,7 +119,7 @@ const image_transformation = client.ImageTransformation()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ImageTransformation().load()
+const result = await client.ImageTransformation().load({ prompt: 'prompt' })
 ```
 
 ### Common Methods

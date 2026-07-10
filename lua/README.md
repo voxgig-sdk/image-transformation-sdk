@@ -35,8 +35,10 @@ local client = sdk.new()
 
 ### 3. Load an imagetransformation
 
+ImageTransformation is nested under prompt, so provide the `prompt`.
+
 ```lua
-local imagetransformation, err = client:ImageTransformation():load()
+local imagetransformation, err = client:ImageTransformation():load({ prompt = "example_prompt" })
 if err then error(err) end
 print(imagetransformation)
 ```
@@ -248,7 +250,7 @@ Create an instance: `local image_transformation = client:ImageTransformation(nil
 #### Example: Load
 
 ```lua
-local image_transformation, err = client:ImageTransformation():load()
+local image_transformation, err = client:ImageTransformation():load({ prompt = "prompt" })
 ```
 
 

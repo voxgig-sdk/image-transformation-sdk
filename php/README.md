@@ -33,10 +33,12 @@ $client = new ImageTransformationSDK();
 
 ### 3. Load an imagetransformation
 
+ImageTransformation is nested under prompt, so provide the `prompt`.
+
 ```php
 try {
     // load() returns the bare ImageTransformation record (throws on error).
-    $imagetransformation = $client->ImageTransformation()->load();
+    $imagetransformation = $client->ImageTransformation()->load(["prompt" => "example_prompt"]);
     print_r($imagetransformation);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -268,7 +270,7 @@ Create an instance: `$image_transformation = $client->ImageTransformation();`
 
 ```php
 // load() returns the bare ImageTransformation record (throws on error).
-$image_transformation = $client->ImageTransformation()->load();
+$image_transformation = $client->ImageTransformation()->load(["prompt" => "prompt"]);
 ```
 
 

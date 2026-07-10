@@ -32,10 +32,12 @@ client = ImageTransformationSDK.new
 
 ### 3. Load an imagetransformation
 
+ImageTransformation is nested under prompt, so provide the `prompt`.
+
 ```ruby
 begin
   # load returns the bare ImageTransformation record (raises on error).
-  imagetransformation = client.ImageTransformation.load()
+  imagetransformation = client.ImageTransformation.load({ "prompt" => "example_prompt" })
   puts imagetransformation
 rescue => err
   warn "load failed: #{err}"
@@ -258,7 +260,7 @@ Create an instance: `image_transformation = client.ImageTransformation`
 
 ```ruby
 # load returns the bare ImageTransformation record (raises on error).
-image_transformation = client.ImageTransformation.load()
+image_transformation = client.ImageTransformation.load({ "prompt" => "prompt" })
 ```
 
 
