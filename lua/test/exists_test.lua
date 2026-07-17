@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ImageTransformation SDK exists test
 
 local sdk = require("image-transformation_sdk")
 
