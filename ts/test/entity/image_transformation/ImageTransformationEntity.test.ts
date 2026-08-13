@@ -26,8 +26,8 @@ import {
 describe('ImageTransformationEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when IMAGETRANSFORMATION_TEST_LIVE=TRUE.
-  afterEach(liveDelay('IMAGETRANSFORMATION_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when IMAGE_TRANSFORMATION_TEST_LIVE=TRUE.
+  afterEach(liveDelay('IMAGE_TRANSFORMATION_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ImageTransformationSDK.test()

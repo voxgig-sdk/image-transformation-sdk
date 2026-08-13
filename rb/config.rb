@@ -108,6 +108,7 @@ module ImageTransformationConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/prompt/{prompt}",
                   "parts" => [

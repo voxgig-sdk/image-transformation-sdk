@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ImageTransformationUtility.registrar = ->(u) {
   u.prepare_params = ImageTransformationUtilities::PrepareParams
   u.prepare_path = ImageTransformationUtilities::PreparePath
   u.prepare_query = ImageTransformationUtilities::PrepareQuery
+  u.graphql_body = ImageTransformationUtilities::GraphqlBody
+  u.graphql_errors = ImageTransformationUtilities::GraphqlErrors
   u.result_basic = ImageTransformationUtilities::ResultBasic
   u.result_body = ImageTransformationUtilities::ResultBody
   u.result_headers = ImageTransformationUtilities::ResultHeaders

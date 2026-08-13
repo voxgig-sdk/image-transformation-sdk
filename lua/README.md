@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local imagetransformation, err = client:ImageTransformation():load()
+local imagetransformation, err = client:ImageTransformation():load({ prompt = "example" })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:ImageTransformation():load()
+local result, err = client:ImageTransformation():load({ prompt = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -331,7 +331,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local imagetransformation = client:ImageTransformation()
-imagetransformation:load()
+imagetransformation:load({ prompt = "example" })
 
 -- imagetransformation:data_get() now returns the imagetransformation data from the last load
 -- imagetransformation:match_get() returns the last match criteria

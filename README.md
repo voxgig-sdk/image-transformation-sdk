@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new ImageTransformationSDK()
-const imagetransformation = await client.ImageTransformation().load()
+const imagetransformation = await client.ImageTransformation().load({ prompt: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ImageTransformationSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ImageTransformationSDK.test({
+  entity: {
+    image_transformation: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const imagetransformation = await client.ImageTransformation().load({ prompt: 'example_prompt' })
-// imagetransformation is a bare ImageTransformation populated with mock data
+// imagetransformation is the ImageTransformation entity, populated with mock data
+// — call imagetransformation.data() for the record itself
 console.log(imagetransformation)
 ```
 
@@ -185,7 +194,7 @@ require_once 'imagetransformation_sdk.php';
 $client = new ImageTransformationSDK();
 
 
-// Load a specific imagetransformation (returns the bare record; throws on error)
+// Load a specific imagetransformation (returns the ENTITY; call data_get() for the record; throws on error)
 $imagetransformation = $client->ImageTransformation()->load(["prompt" => "example_prompt"]);
 print_r($imagetransformation);
 ```
@@ -216,7 +225,7 @@ require_relative "ImageTransformation_sdk"
 client = ImageTransformationSDK.new
 
 
-# Load a specific imagetransformation (returns the bare record; raises on error)
+# Load a specific imagetransformation (returns the ENTITY; call data_get for the record)
 imagetransformation = client.ImageTransformation.load({ "prompt" => "example_prompt" })
 puts imagetransformation
 ```
@@ -350,6 +359,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://freepublicapis.com/image-transformation-api](https://freepublicapis.com/image-transformation-api)
 

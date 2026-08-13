@@ -16,11 +16,11 @@
 import pytest
 
 from imagetransformation_sdk import ImageTransformationSDK
-from core.error import ImageTransformationError
-from core.result import ImageTransformationResult
-from core.response import ImageTransformationResponse
-from core.spec import ImageTransformationSpec
-from feature.base_feature import ImageTransformationBaseFeature
+from imagetransformation_sdk.core.error import ImageTransformationError
+from imagetransformation_sdk.core.result import ImageTransformationResult
+from imagetransformation_sdk.core.response import ImageTransformationResponse
+from imagetransformation_sdk.core.spec import ImageTransformationSpec
+from imagetransformation_sdk.feature.base_feature import ImageTransformationBaseFeature
 
 
 def _client():

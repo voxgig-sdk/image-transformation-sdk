@@ -107,6 +107,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/prompt/{prompt}",
                 ["parts"] = {

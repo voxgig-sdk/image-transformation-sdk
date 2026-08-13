@@ -43,7 +43,8 @@ func TestImageTransformationDirect(t *testing.T) {
 		if setup.live {
 			// Live mode is lenient: synthetic IDs frequently 4xx. Skip
 			// rather than fail when the load endpoint isn't reachable with
-			// the IDs we can construct from setup.idmap.
+			// the IDs we can construct from setup.idmap — unless the model
+			// sets main.kit.test.live.strict.
 			if err != nil {
 				t.Skipf("load call failed (likely synthetic IDs against live API): %v", err)
 			}
@@ -108,11 +109,11 @@ func image_transformationDirectSetup(mockres any) *image_transformationDirectSet
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID": map[string]any{},
-		"IMAGETRANSFORMATION_TEST_LIVE":    "FALSE",
+		"IMAGE_TRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID": map[string]any{},
+		"IMAGE_TRANSFORMATION_TEST_LIVE":    "FALSE",
 	})
 
-	live := env["IMAGETRANSFORMATION_TEST_LIVE"] == "TRUE"
+	live := env["IMAGE_TRANSFORMATION_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
@@ -120,7 +121,7 @@ func image_transformationDirectSetup(mockres any) *image_transformationDirectSet
 		client := sdk.NewImageTransformationSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID"]; ok {
+		if entidRaw, ok := env["IMAGE_TRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {

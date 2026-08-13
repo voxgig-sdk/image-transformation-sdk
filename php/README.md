@@ -37,7 +37,7 @@ ImageTransformation is nested under prompt, so provide the `prompt`.
 
 ```php
 try {
-    // load() returns the bare ImageTransformation record (throws on error).
+    // load() returns the ENTITY — call data_get() for the ImageTransformation record (throws on error).
     $imagetransformation = $client->ImageTransformation()->load(["prompt" => "example_prompt"]);
     print_r($imagetransformation);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $imagetransformation = $client->ImageTransformation()->load();
+    $imagetransformation = $client->ImageTransformation()->load(["prompt" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,8 +125,9 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = ImageTransformationSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$imagetransformation = $client->ImageTransformation()->load();
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$imagetransformation = $client->ImageTransformation()->load(["prompt" => "example"]);
 print_r($imagetransformation);
 ```
 
@@ -224,7 +225,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -269,7 +270,7 @@ Create an instance: `$image_transformation = $client->ImageTransformation();`
 #### Example: Load
 
 ```php
-// load() returns the bare ImageTransformation record (throws on error).
+// load() returns the ENTITY — call data_get() for the ImageTransformation record (throws on error).
 $image_transformation = $client->ImageTransformation()->load(["prompt" => "prompt"]);
 ```
 
@@ -351,7 +352,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $imagetransformation = $client->ImageTransformation();
-$imagetransformation->load();
+$imagetransformation->load(["prompt" => "example"]);
 
 // $imagetransformation->data_get() now returns the imagetransformation data from the last load
 // $imagetransformation->match_get() returns the last match criteria

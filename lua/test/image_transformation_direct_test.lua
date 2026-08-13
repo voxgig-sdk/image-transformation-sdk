@@ -68,11 +68,11 @@ function image_transformation_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID"] = {},
-    ["IMAGETRANSFORMATION_TEST_LIVE"] = "FALSE",
+    ["IMAGE_TRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID"] = {},
+    ["IMAGE_TRANSFORMATION_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["IMAGETRANSFORMATION_TEST_LIVE"] == "TRUE"
+  local live = env["IMAGE_TRANSFORMATION_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

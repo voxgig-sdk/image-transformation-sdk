@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ImageTransformationControl
-from core.error import ImageTransformationError
-from core.result import ImageTransformationResult
-from core.spec import ImageTransformationSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import ImageTransformationControl
+from projectname_sdk.core.error import ImageTransformationError
+from projectname_sdk.core.result import ImageTransformationResult
+from projectname_sdk.core.spec import ImageTransformationSpec
 
 
 # True when this SDK was generated with the named feature.

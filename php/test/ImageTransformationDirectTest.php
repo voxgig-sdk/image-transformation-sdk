@@ -73,11 +73,11 @@ function image_transformation_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID" => [],
-        "IMAGETRANSFORMATION_TEST_LIVE" => "FALSE",
+        "IMAGE_TRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID" => [],
+        "IMAGE_TRANSFORMATION_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["IMAGETRANSFORMATION_TEST_LIVE"] === "TRUE";
+    $live = $env["IMAGE_TRANSFORMATION_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

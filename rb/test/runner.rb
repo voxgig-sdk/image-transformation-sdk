@@ -23,8 +23,8 @@ module ImageTransformationTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("IMAGETRANSFORMATION_TEST_LIVE")
-    override = getenv("IMAGETRANSFORMATION_TEST_OVERRIDE")
+    live = getenv("IMAGE_TRANSFORMATION_TEST_LIVE")
+    override = getenv("IMAGE_TRANSFORMATION_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ImageTransformationTestRunner
       end
     end
 
-    explain = getenv("IMAGETRANSFORMATION_TEST_EXPLAIN")
-    m["IMAGETRANSFORMATION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("IMAGE_TRANSFORMATION_TEST_EXPLAIN")
+    m["IMAGE_TRANSFORMATION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from imagetransformation_sdk.utility.voxgig_struct import voxgig_struct as vs
 from imagetransformation_sdk import ImageTransformationSDK
-from core import helpers
+from imagetransformation_sdk.core import helpers
 from test import runner
 
 
@@ -63,11 +63,11 @@ def _image_transformation_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "IMAGETRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID": {},
-        "IMAGETRANSFORMATION_TEST_LIVE": "FALSE",
+        "IMAGE_TRANSFORMATION_TEST_IMAGE_TRANSFORMATION_ENTID": {},
+        "IMAGE_TRANSFORMATION_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("IMAGETRANSFORMATION_TEST_LIVE") == "TRUE"
+    live = env.get("IMAGE_TRANSFORMATION_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

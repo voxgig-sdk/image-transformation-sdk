@@ -113,6 +113,7 @@ class ImageTransformationConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/prompt/{prompt}',
                   'parts' => [

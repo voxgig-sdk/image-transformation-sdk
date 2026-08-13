@@ -56,7 +56,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const imagetransformation = await client.ImageTransformation().load()
+  const imagetransformation = await client.ImageTransformation().load({ prompt: "example" })
   console.log(imagetransformation)
 } catch (err) {
   console.error('load failed:', err)
@@ -123,8 +123,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ImageTransformationSDK.test()
 
-const imagetransformation = await client.ImageTransformation().load()
-// imagetransformation is a bare entity populated with mock response data
+const imagetransformation = await client.ImageTransformation().load({ prompt: 'example_prompt' })
+// imagetransformation is the entity, populated with mock response data
+// — call imagetransformation.data() for the record itself
 console.log(imagetransformation)
 ```
 
@@ -143,7 +144,7 @@ Entity instances remember their last match and data:
 const entity = client.ImageTransformation()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ prompt: 'example_prompt' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -384,7 +385,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const imagetransformation = client.ImageTransformation()
-await imagetransformation.load()
+await imagetransformation.load({ prompt: "example" })
 
 // imagetransformation.data() now returns the imagetransformation data from the last `load`
 // imagetransformation.match() returns the last match criteria

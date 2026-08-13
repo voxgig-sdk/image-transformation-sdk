@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ImageTransformation SDK exists test
 
 import pytest
 from imagetransformation_sdk import ImageTransformationSDK

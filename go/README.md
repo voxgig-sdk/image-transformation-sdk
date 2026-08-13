@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-imagetransformation, err := client.ImageTransformation(nil).Load(nil, nil)
+imagetransformation, err := client.ImageTransformation(nil).Load(map[string]any{"prompt": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 imageTransformation, err := client.ImageTransformation(nil).Load(
-    nil, nil,
+    map[string]any{"prompt": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -363,7 +363,7 @@ stores the returned data and match criteria internally.
 
 ```go
 imagetransformation := client.ImageTransformation(nil)
-imagetransformation.Load(nil, nil)
+imagetransformation.Load(map[string]any{"prompt": "example"}, nil)
 
 // imagetransformation.Data() now returns the imagetransformation data from the last load
 // imagetransformation.Match() returns the last match criteria

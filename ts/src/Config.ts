@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'ImageTransformation',
   }
 
 
@@ -137,6 +137,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/prompt/{prompt}",
               "parts": [

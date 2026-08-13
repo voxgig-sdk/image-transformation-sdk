@@ -36,7 +36,7 @@ ImageTransformation is nested under prompt, so provide the `prompt`.
 
 ```ruby
 begin
-  # load returns the bare ImageTransformation record (raises on error).
+  # load returns the ENTITY — call data_get for the ImageTransformation record (raises on error).
   imagetransformation = client.ImageTransformation.load({ "prompt" => "example_prompt" })
   puts imagetransformation
 rescue => err
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  imagetransformation = client.ImageTransformation.load()
+  imagetransformation = client.ImageTransformation.load({ "prompt" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,8 +119,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = ImageTransformationSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-imagetransformation = client.ImageTransformation.load()
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+imagetransformation = client.ImageTransformation.load({ "prompt" => "example" })
 puts imagetransformation
 ```
 
@@ -259,7 +260,7 @@ Create an instance: `image_transformation = client.ImageTransformation`
 #### Example: Load
 
 ```ruby
-# load returns the bare ImageTransformation record (raises on error).
+# load returns the ENTITY — call data_get for the ImageTransformation record (raises on error).
 image_transformation = client.ImageTransformation.load({ "prompt" => "prompt" })
 ```
 
@@ -341,7 +342,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 imagetransformation = client.ImageTransformation
-imagetransformation.load()
+imagetransformation.load({ "prompt" => "example" })
 
 # imagetransformation.data_get now returns the imagetransformation data from the last load
 # imagetransformation.match_get returns the last match criteria
