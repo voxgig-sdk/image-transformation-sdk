@@ -40,7 +40,7 @@ class ImageTransformationSDK
         $utility = new ImageTransformationUtility();
         $this->_utility = $utility;
 
-        $config = ImageTransformationConfig::make_config();
+        $config = ImageTransformationConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

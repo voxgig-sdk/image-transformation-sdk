@@ -28,7 +28,7 @@ class ImageTransformationSDK
     utility = ImageTransformationUtility.new
     @_utility = utility
 
-    config = ImageTransformationConfig.make_config
+    config = ImageTransformationConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

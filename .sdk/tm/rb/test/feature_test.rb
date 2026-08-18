@@ -15,7 +15,7 @@ require_relative "../ImageTransformation_sdk"
 module ImageTransformationFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = ImageTransformationConfig.make_config["feature"]
+    f = ImageTransformationConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
