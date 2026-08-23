@@ -19,6 +19,9 @@ module ImageTransformationConfig
     {
       "main" => {
         "name" => "ImageTransformation",
+        "slug" => "image-transformation",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
