@@ -10,6 +10,13 @@
 
 ---@class ImageTransformationLoadMatch
 ---@field prompt string
+---@field enhance? boolean
+---@field height? number
+---@field image? string
+---@field model? string
+---@field nologo? boolean
+---@field seed? number
+---@field width? number
 
 local M = {}
 

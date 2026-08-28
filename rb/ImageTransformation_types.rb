@@ -16,8 +16,36 @@ end
 #
 # @!attribute [rw] prompt
 #   @return [String]
+#
+# @!attribute [rw] enhance
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] height
+#   @return [Integer, nil]
+#
+# @!attribute [rw] image
+#   @return [String, nil]
+#
+# @!attribute [rw] model
+#   @return [String, nil]
+#
+# @!attribute [rw] nologo
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] seed
+#   @return [Integer, nil]
+#
+# @!attribute [rw] width
+#   @return [Integer, nil]
 ImageTransformationLoadMatch = Struct.new(
   :prompt,
+  :enhance,
+  :height,
+  :image,
+  :model,
+  :nologo,
+  :seed,
+  :width,
   keyword_init: true
 )
 

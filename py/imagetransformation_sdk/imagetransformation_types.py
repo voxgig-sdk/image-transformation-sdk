@@ -20,5 +20,15 @@ class ImageTransformation(TypedDict):
     pass
 
 
-class ImageTransformationLoadMatch(TypedDict):
+class ImageTransformationLoadMatchRequired(TypedDict):
     prompt: str
+
+
+class ImageTransformationLoadMatch(ImageTransformationLoadMatchRequired, total=False):
+    enhance: bool
+    height: int
+    image: str
+    model: str
+    nologo: bool
+    seed: int
+    width: int

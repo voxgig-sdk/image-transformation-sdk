@@ -19,6 +19,13 @@ type ImageTransformation struct {
 // ImageTransformationLoadMatch is the typed request payload for ImageTransformation.LoadTyped.
 type ImageTransformationLoadMatch struct {
 	Prompt string `json:"prompt"`
+	Enhance *bool `json:"enhance,omitempty"`
+	Height *int `json:"height,omitempty"`
+	Image *string `json:"image,omitempty"`
+	Model *string `json:"model,omitempty"`
+	Nologo *bool `json:"nologo,omitempty"`
+	Seed *int `json:"seed,omitempty"`
+	Width *int `json:"width,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

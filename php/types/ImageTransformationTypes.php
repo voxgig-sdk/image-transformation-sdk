@@ -21,5 +21,12 @@ class ImageTransformation
 class ImageTransformationLoadMatch
 {
     public string $prompt;
+    public ?bool $enhance = null;
+    public ?int $height = null;
+    public ?string $image = null;
+    public ?string $model = null;
+    public ?bool $nologo = null;
+    public ?int $seed = null;
+    public ?int $width = null;
 }
 
