@@ -126,9 +126,13 @@ class ImageTransformationConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/prompt/{prompt}',
-                  'parts' => [
-                    'prompt',
-                    '{prompt}',
+                  'segments' => [
+                    [
+                      'lit' => 'prompt',
+                    ],
+                    [
+                      'var' => 'prompt',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -145,6 +149,10 @@ class ImageTransformationConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'prompt',
+                    '{prompt}',
                   ],
                 ],
               ],

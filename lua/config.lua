@@ -100,9 +100,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/prompt/{prompt}",
-                ["parts"] = {
-                  "prompt",
-                  "{prompt}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "prompt",
+                  },
+                  {
+                    ["var"] = "prompt",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -119,6 +123,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "prompt",
+                  "{prompt}",
                 },
               },
             },

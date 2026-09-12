@@ -112,9 +112,13 @@ module ImageTransformationConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/prompt/{prompt}",
-                  "parts" => [
-                    "prompt",
-                    "{prompt}",
+                  "segments" => [
+                    {
+                      "lit" => "prompt",
+                    },
+                    {
+                      "var" => "prompt",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -132,6 +136,10 @@ module ImageTransformationConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "prompt",
+                    "{prompt}",
+                  ],
                 },
               ],
             },
