@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ImageTransformationSDK } from '@voxgig-sdk/image-transformation'
+import { ImageTransformationSDK } from '@voxgig-sdk/image-transformation-sdk'
 
 const client = new ImageTransformationSDK()
 ```
@@ -397,7 +397,7 @@ image-transformation/
 Import the SDK from the package root:
 
 ```ts
-import { ImageTransformationSDK } from '@voxgig-sdk/image-transformation'
+import { ImageTransformationSDK } from '@voxgig-sdk/image-transformation-sdk'
 ```
 
 ### Entity state

@@ -105,7 +105,7 @@ local result, err = client:ImageTransformation():load({ prompt = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/image-transformation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/releases) |
+| TypeScript | `@voxgig-sdk/image-transformation-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/releases) |
 | Python | `voxgig-sdk-image-transformation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/releases) |
 | PHP | `voxgig-sdk/image-transformation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/image-transformation-sdk/go` | `go get github.com/voxgig-sdk/image-transformation-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:ImageTransformation():load({ prompt = "example" })
 ### TypeScript
 
 ```ts
-import { ImageTransformationSDK } from '@voxgig-sdk/image-transformation'
+import { ImageTransformationSDK } from '@voxgig-sdk/image-transformation-sdk'
 
 const client = new ImageTransformationSDK()
 
