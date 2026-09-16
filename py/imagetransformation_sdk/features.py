@@ -1,12 +1,18 @@
 # ImageTransformation SDK feature factory
 
 from imagetransformation_sdk.feature.base_feature import ImageTransformationBaseFeature
+from imagetransformation_sdk.feature.ratelimit_feature import ImageTransformationRatelimitFeature
+from imagetransformation_sdk.feature.retry_feature import ImageTransformationRetryFeature
 from imagetransformation_sdk.feature.test_feature import ImageTransformationTestFeature
+from imagetransformation_sdk.feature.timeout_feature import ImageTransformationTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ImageTransformationBaseFeature(),
+    "ratelimit": lambda: ImageTransformationRatelimitFeature(),
+    "retry": lambda: ImageTransformationRetryFeature(),
     "test": lambda: ImageTransformationTestFeature(),
+    "timeout": lambda: ImageTransformationTimeoutFeature(),
 }
 
 
