@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      image_transformation: {
-      },
-
+        image_transformation: {
+        },
+  
     }
   }
 
