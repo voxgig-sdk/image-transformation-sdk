@@ -33,8 +33,6 @@ $client = new ImageTransformationSDK();
 
 ### 3. Load an imagetransformation
 
-ImageTransformation is nested under prompt, so provide the `prompt`.
-
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the ImageTransformation record (throws on error).

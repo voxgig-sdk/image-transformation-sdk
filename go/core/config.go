@@ -96,65 +96,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "transform this image",
-											"kind": "param",
-											"name": "prompt",
-											"orig": "prompt",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": false,
-											"kind": "query",
-											"name": "enhance",
-											"orig": "enhance",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "height",
-											"orig": "height",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "image",
-											"orig": "image",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "kontext",
-											"kind": "query",
-											"name": "model",
-											"orig": "model",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": false,
-											"kind": "query",
-											"name": "nologo",
-											"orig": "nologo",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "seed",
-											"orig": "seed",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "width",
-											"orig": "width",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/prompt/{prompt}",
@@ -164,6 +105,74 @@ func MakeConfig() map[string]any {
 									},
 									map[string]any{
 										"var": "prompt",
+									},
+								},
+								"parts": []any{
+									"prompt",
+									"{prompt}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "prompt",
+											"orig": "prompt",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "transform this image",
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "enhance",
+											"orig": "enhance",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": false,
+										},
+										map[string]any{
+											"name": "height",
+											"orig": "height",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "image",
+											"orig": "image",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "model",
+											"orig": "model",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "kontext",
+										},
+										map[string]any{
+											"name": "nologo",
+											"orig": "nologo",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": false,
+										},
+										map[string]any{
+											"name": "seed",
+											"orig": "seed",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "width",
+											"orig": "width",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -178,24 +187,12 @@ func MakeConfig() map[string]any {
 										"width",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"prompt",
-									"{prompt}",
-								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"prompt",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 		},

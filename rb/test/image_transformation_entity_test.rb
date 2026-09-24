@@ -62,7 +62,7 @@ def image_transformation_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["image_transformation01", "image_transformation02", "image_transformation03", "prompt01", "prompt02", "prompt03"],
+    ["image_transformation01", "image_transformation02", "image_transformation03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

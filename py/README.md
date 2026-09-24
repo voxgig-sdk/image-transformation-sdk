@@ -38,7 +38,6 @@ client = ImageTransformationSDK()
 
 ### 3. Load an imagetransformation
 
-ImageTransformation is nested under prompt, so provide the `prompt`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python

@@ -70,7 +70,7 @@ function image_transformation_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["image_transformation01", "image_transformation02", "image_transformation03", "prompt01", "prompt02", "prompt03"] as $k) {
+    foreach (["image_transformation01", "image_transformation02", "image_transformation03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

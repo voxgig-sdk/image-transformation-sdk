@@ -121,65 +121,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "transform this image",
-                      "kind": "param",
-                      "name": "prompt",
-                      "orig": "prompt",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "example": False,
-                      "kind": "query",
-                      "name": "enhance",
-                      "orig": "enhance",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "height",
-                      "orig": "height",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "image",
-                      "orig": "image",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "kontext",
-                      "kind": "query",
-                      "name": "model",
-                      "orig": "model",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": False,
-                      "kind": "query",
-                      "name": "nologo",
-                      "orig": "nologo",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "seed",
-                      "orig": "seed",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "width",
-                      "orig": "width",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/prompt/{prompt}",
@@ -191,6 +132,74 @@ def make_config():
                     "var": "prompt",
                   },
                 ],
+                "parts": [
+                  "prompt",
+                  "{prompt}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "prompt",
+                      "orig": "prompt",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "transform this image",
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "enhance",
+                      "orig": "enhance",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "example": False,
+                    },
+                    {
+                      "name": "height",
+                      "orig": "height",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "image",
+                      "orig": "image",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "model",
+                      "orig": "model",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "kontext",
+                    },
+                    {
+                      "name": "nologo",
+                      "orig": "nologo",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "example": False,
+                    },
+                    {
+                      "name": "seed",
+                      "orig": "seed",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "width",
+                      "orig": "width",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "enhance",
@@ -203,24 +212,12 @@ def make_config():
                     "width",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "prompt",
-                  "{prompt}",
-                ],
               },
             ],
           },
         },
         "relations": {
-          "ancestors": [
-            [
-              "prompt",
-            ],
-          ],
+          "ancestors": [],
         },
       },
     },

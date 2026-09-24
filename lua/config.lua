@@ -92,65 +92,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = "transform this image",
-                      ["kind"] = "param",
-                      ["name"] = "prompt",
-                      ["orig"] = "prompt",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["example"] = false,
-                      ["kind"] = "query",
-                      ["name"] = "enhance",
-                      ["orig"] = "enhance",
-                      ["type"] = "`$BOOLEAN`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "height",
-                      ["orig"] = "height",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "image",
-                      ["orig"] = "image",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "kontext",
-                      ["kind"] = "query",
-                      ["name"] = "model",
-                      ["orig"] = "model",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = false,
-                      ["kind"] = "query",
-                      ["name"] = "nologo",
-                      ["orig"] = "nologo",
-                      ["type"] = "`$BOOLEAN`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "seed",
-                      ["orig"] = "seed",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "width",
-                      ["orig"] = "width",
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/prompt/{prompt}",
@@ -160,6 +101,74 @@ local function make_config()
                   },
                   {
                     ["var"] = "prompt",
+                  },
+                },
+                ["parts"] = {
+                  "prompt",
+                  "{prompt}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "prompt",
+                      ["orig"] = "prompt",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = "transform this image",
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "enhance",
+                      ["orig"] = "enhance",
+                      ["type"] = "`$BOOLEAN`",
+                      ["kind"] = "query",
+                      ["example"] = false,
+                    },
+                    {
+                      ["name"] = "height",
+                      ["orig"] = "height",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "image",
+                      ["orig"] = "image",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "model",
+                      ["orig"] = "model",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "kontext",
+                    },
+                    {
+                      ["name"] = "nologo",
+                      ["orig"] = "nologo",
+                      ["type"] = "`$BOOLEAN`",
+                      ["kind"] = "query",
+                      ["example"] = false,
+                    },
+                    {
+                      ["name"] = "seed",
+                      ["orig"] = "seed",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "width",
+                      ["orig"] = "width",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
                   },
                 },
                 ["select"] = {
@@ -174,24 +183,12 @@ local function make_config()
                     "width",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "prompt",
-                  "{prompt}",
-                },
               },
             },
           },
         },
         ["relations"] = {
-          ["ancestors"] = {
-            {
-              "prompt",
-            },
-          },
+          ["ancestors"] = {},
         },
       },
     },

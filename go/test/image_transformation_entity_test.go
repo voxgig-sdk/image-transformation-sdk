@@ -98,7 +98,7 @@ func image_transformationBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"image_transformation01", "image_transformation02", "image_transformation03", "prompt01", "prompt02", "prompt03"},
+		[]any{"image_transformation01", "image_transformation02", "image_transformation03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

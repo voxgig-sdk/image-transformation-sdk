@@ -1,0 +1,32 @@
+# BasicImageTransformationFlow
+
+main: kit: flow: BasicImageTransformationFlow:
+{
+  entity: "image_transformation",
+  kind: "basic",
+  name: "BasicImageTransformationFlow",
+  step: [
+    {
+      i: {
+        ref: "image_transformation_ref01",
+        srcdatavar: "image_transformation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "image_transformation01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-image_transformation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicImageTransformationFlow"
+}
