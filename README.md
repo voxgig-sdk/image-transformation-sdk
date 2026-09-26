@@ -106,11 +106,11 @@ local result, err = client:ImageTransformation():load({ prompt = "example" })
 | Language | Package | Install |
 | --- | --- | --- |
 | TypeScript | `@voxgig-sdk/image-transformation-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/tags) |
-| Python | `voxgig-sdk-image-transformation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/tags) |
-| PHP | `voxgig-sdk/image-transformation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/tags) |
+| Python | `voxgig-sdk-image-transformation-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/tags) |
+| PHP | `voxgig-sdk/image-transformation-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/image-transformation-sdk/go` | `go get github.com/voxgig-sdk/image-transformation-sdk/go@latest` |
-| Ruby | `voxgig-sdk-image-transformation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/tags) |
-| Lua | `voxgig-sdk-image-transformation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/tags) |
+| Ruby | `voxgig-sdk-image-transformation-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/tags) |
+| Lua | `voxgig-sdk-image-transformation-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/image-transformation-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/image-transformation-sdk/go-cli` | `go install github.com/voxgig-sdk/image-transformation-sdk/go-cli/cmd/image-transformation@latest` |
 | Go MCP server | `github.com/voxgig-sdk/image-transformation-sdk/go-mcp` | `go get github.com/voxgig-sdk/image-transformation-sdk/go-mcp@latest` |
 
@@ -340,10 +340,10 @@ forking the SDK.
 
 | Feature | Purpose |
 | --- | --- |
-| **RatelimitFeature** | Client-side rate limiting via a token bucket |
-| **RetryFeature** | Automatic retry of transient failures with exponential backoff |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-| **TimeoutFeature** | Per-request timeout with transport abort |
+| **RatelimitFeature** | Rate limiting |
+| **RetryFeature** | Retry |
+| **TestFeature** | Test transport |
+| **TimeoutFeature** | Timeout |
 
 Pass custom features via the `extend` option at construction time.
 
