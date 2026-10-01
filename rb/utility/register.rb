@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 ImageTransformationUtility.registrar = ->(u) {
   u.clean = ImageTransformationUtilities::Clean
+  u.clean_add = ImageTransformationUtilities::CleanAdd
+  u.clean_explain = ImageTransformationUtilities::CleanExplain
   u.done = ImageTransformationUtilities::Done
   u.make_error = ImageTransformationUtilities::MakeError
   u.feature_add = ImageTransformationUtilities::FeatureAdd

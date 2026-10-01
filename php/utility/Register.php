@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 ImageTransformationUtility::setRegistrar(function (ImageTransformationUtility $u): void {
     $u->clean = [ImageTransformationClean::class, 'call'];
+    $u->clean_add = [ImageTransformationClean::class, 'add'];
+    $u->clean_explain = [ImageTransformationDone::class, 'clean_explain'];
     $u->done = [ImageTransformationDone::class, 'call'];
     $u->make_error = [ImageTransformationMakeError::class, 'call'];
     $u->feature_add = [ImageTransformationFeatureAdd::class, 'call'];
