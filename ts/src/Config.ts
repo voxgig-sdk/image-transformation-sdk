@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -218,15 +219,25 @@ class Config {
               },
               "select": {
                 "exist": [
-                  "enhance",
-                  "height",
-                  "image",
-                  "model",
-                  "nologo",
-                  "prompt",
-                  "seed",
-                  "width"
+                  "prompt"
                 ]
+              },
+              "response": {
+                "alternatives": [
+                  {
+                    "binary": true,
+                    "kind": "raw",
+                    "media": "image/png"
+                  },
+                  {
+                    "binary": true,
+                    "kind": "raw",
+                    "media": "image/webp"
+                  }
+                ],
+                "binary": true,
+                "kind": "raw",
+                "media": "image/jpeg"
               }
             }
           ]

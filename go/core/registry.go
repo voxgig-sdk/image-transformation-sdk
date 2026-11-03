@@ -12,5 +12,5 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
-var NewImageTransformationEntityFunc func(client *ImageTransformationSDK, entopts map[string]any) ImageTransformationEntity
+var NewImageTransformationEntityFunc func(client *ImageTransformationSDK, entopts map[string]any) ImageTransformationEntityBase
 

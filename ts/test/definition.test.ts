@@ -31,6 +31,12 @@ const PLAN: any[] = [
       "width": "v1"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "image/png",
+      "image/jpeg",
+      "image/webp"
+    ],
     "query": [
       "model",
       "image",
@@ -39,6 +45,36 @@ const PLAN: any[] = [
       "seed",
       "nologo",
       "enhance"
+    ],
+    "queryArgs": [
+      {
+        "name": "enhance",
+        "wire": "enhance"
+      },
+      {
+        "name": "height",
+        "wire": "height"
+      },
+      {
+        "name": "image",
+        "wire": "image"
+      },
+      {
+        "name": "model",
+        "wire": "model"
+      },
+      {
+        "name": "nologo",
+        "wire": "nologo"
+      },
+      {
+        "name": "seed",
+        "wire": "seed"
+      },
+      {
+        "name": "width",
+        "wire": "width"
+      }
     ],
     "auth": null,
     "status": 200,

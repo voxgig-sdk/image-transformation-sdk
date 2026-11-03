@@ -85,15 +85,25 @@ main: kit: entity: image_transformation: {
           o: "/prompt/{prompt}"
           q: {
             exist: [
-              "enhance"
-              "height"
-              "image"
-              "model"
-              "nologo"
               "prompt"
-              "seed"
-              "width"
             ]
+          }
+          rs: {
+            alternatives: [
+              {
+                binary: true
+                kind: "raw"
+                media: "image/png"
+              }
+              {
+                binary: true
+                kind: "raw"
+                media: "image/webp"
+              }
+            ]
+            binary: true
+            kind: "raw"
+            media: "image/jpeg"
           }
           s: [
             {

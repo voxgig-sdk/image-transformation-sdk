@@ -79,6 +79,7 @@ module ImageTransformationConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -185,15 +186,25 @@ module ImageTransformationConfig
                   },
                   "select" => {
                     "exist" => [
-                      "enhance",
-                      "height",
-                      "image",
-                      "model",
-                      "nologo",
                       "prompt",
-                      "seed",
-                      "width",
                     ],
+                  },
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "binary" => true,
+                        "kind" => "raw",
+                        "media" => "image/png",
+                      },
+                      {
+                        "binary" => true,
+                        "kind" => "raw",
+                        "media" => "image/webp",
+                      },
+                    ],
+                    "binary" => true,
+                    "kind" => "raw",
+                    "media" => "image/jpeg",
                   },
                 },
               ],

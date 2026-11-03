@@ -3,5 +3,12 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Production server",
+      "Successfully transformed image",
+      "This API allows users to apply various transformations to images, enabling modifications such as filtering, resizing, and style transfer. It is designed for developers looking to enhance visual content programmatically."
+    ]
+  }
 }

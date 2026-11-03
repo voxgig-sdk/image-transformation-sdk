@@ -13,7 +13,12 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type ImageTransformationEntity = core.ImageTransformationEntity
+type ImageTransformationEntityBase = core.ImageTransformationEntityBase
+
+// Deprecated: use ImageTransformationEntityBase.
+type ImageTransformationEntity = core.ImageTransformationEntityBase
+
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -41,7 +46,7 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewImageTransformationEntityFunc = func(client *core.ImageTransformationSDK, entopts map[string]any) core.ImageTransformationEntity {
+	core.NewImageTransformationEntityFunc = func(client *core.ImageTransformationSDK, entopts map[string]any) core.ImageTransformationEntityBase {
 		return entity.NewImageTransformationEntity(client, entopts)
 	}
 }

@@ -67,6 +67,7 @@ local function make_config()
         },
         ["optspec"] = {
           ["clearTimer"] = "`$FUNCTION`",
+          ["now"] = "`$FUNCTION`",
           ["setTimer"] = "`$FUNCTION`",
         },
         ["strict"] = false,
@@ -173,15 +174,25 @@ local function make_config()
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "enhance",
-                    "height",
-                    "image",
-                    "model",
-                    "nologo",
                     "prompt",
-                    "seed",
-                    "width",
                   },
+                },
+                ["response"] = {
+                  ["alternatives"] = {
+                    {
+                      ["binary"] = true,
+                      ["kind"] = "raw",
+                      ["media"] = "image/png",
+                    },
+                    {
+                      ["binary"] = true,
+                      ["kind"] = "raw",
+                      ["media"] = "image/webp",
+                    },
+                  },
+                  ["binary"] = true,
+                  ["kind"] = "raw",
+                  ["media"] = "image/jpeg",
                 },
               },
             },
